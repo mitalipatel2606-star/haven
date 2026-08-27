@@ -1,4 +1,5 @@
 import { useState, useEffect, useId } from 'react';
+import { DEFAULT_FILTERS } from '../hooks/useSearchFilters';
 
 export default function SearchBar({ filters, onSearch }) {
   const [draft, setDraft] = useState({
@@ -74,6 +75,14 @@ export default function SearchBar({ filters, onSearch }) {
           onChange={handleChange('guests')}
         />
       </div>
+      <button type="button" className='clear-ticket__submit' onClick={() => {
+        const clearedDraft = { ...DEFAULT_FILTERS };
+        setDraft(clearedDraft);
+        onSearch(clearedDraft);
+
+      }}>
+        Clear
+      </button>
 
       <button type="submit" className="search-ticket__submit">
         <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
@@ -82,6 +91,7 @@ export default function SearchBar({ filters, onSearch }) {
         </svg>
         <span>Search</span>
       </button>
+
     </form>
   );
 }
