@@ -11,9 +11,12 @@ export default function StarRating({ rating, reviewCount, size = 'md' }) {
     <span className={`star-rating star-rating--${size}`}>
       <StarIcon />
       <span className="star-rating__value">{rating.toFixed(2)}</span>
+      {Number(rating) <= 2.5}?(<span>Low Rating</span>):(<span>High Rating</span>)
       {typeof reviewCount === 'number' && (
         <span className="star-rating__count">({reviewCount})</span>
+
       )}
+
     </span>
   );
 }
