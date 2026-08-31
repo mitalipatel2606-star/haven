@@ -22,10 +22,24 @@ export default function ImageGallery({ images, title }) {
             className={`gallery__thumb${index === activeIndex ? ' gallery__thumb--active' : ''}`}
             onClick={() => setActiveIndex(index)}
           >
+
             <img src={src} alt="" loading="lazy" />
           </button>
         ))}
       </div>
+      <button
+        type="button"
+        onClick={() => setActiveIndex((activeIndex + 1) % images.length)}
+      >
+        Next
+      </button>
+      <button
+        type="button"
+        onClick={() => setActiveIndex((activeIndex - 1 + images.length) % images.length)}
+      >
+        Prev
+      </button>
+
     </div>
   );
 }
